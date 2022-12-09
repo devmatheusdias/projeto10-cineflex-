@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ORANGE_BTN } from "../constants/colors";
+import { ORANGE_BTN } from "../../constants/colors";
 
 export default function Button({titleButton}){
    return(

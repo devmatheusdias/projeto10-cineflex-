@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Seat from "./Seat";
-import Button from "./Button";
+import Button from "../GlobalComponents/Button";
 
 export default function SeatList() {
     return (

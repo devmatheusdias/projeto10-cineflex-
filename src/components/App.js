@@ -1,19 +1,14 @@
 import styled from 'styled-components'
-import Header from './Header';
-// import MovieList from './MovieList';
-import SessionsList from './SessionList';
-import Seat from './Seat';
-import Footer from './Footer';
-import SeatList from './SeatList';
-import Success from './Sucess';
+import Header from './Header/Header';
+import MovieList from '../components/Movies/MovieList';
+import Footer from './Footer/Footer';
+import SeatList from '../components/Seats/SeatList';
 
 function App() {
   return (
     <AppContainer>
       <Header></Header>
-      <SeatList></SeatList>
-      {/* <Success></Success> */}
-      <Footer></Footer>
+      <MovieList></MovieList>
     </AppContainer>
     );
 }

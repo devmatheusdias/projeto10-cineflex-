@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GRAY_AVAILABLE } from "../constants/colors";
+import { GRAY_AVAILABLE } from "../../constants/colors";
 
 export default function Seat(){
     return(
