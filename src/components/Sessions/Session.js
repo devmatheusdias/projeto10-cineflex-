@@ -1,13 +1,17 @@
+
 import styled from "styled-components";
 import { ORANGE_BTN } from "../../constants/colors";
 
-export default function Session() {
+export default function Session({session}) {
+
+    const {weekday, date, showtimes} = session;
+
     return (
         <ContainerSession>
-            <p>Quinta-feira - 24/06/2021</p>
+            <p>{weekday} - {date}</p>
             <div>
-                <button>15:00</button>
-                <button>19:00</button>
+                <button>{showtimes[0].name}</button>
+                <button>{showtimes[1].name}</button>
             </div>
         </ContainerSession>
     );

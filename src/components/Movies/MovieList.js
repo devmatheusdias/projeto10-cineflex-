@@ -25,7 +25,6 @@ export default function MovieList(){
 
 const ContainerMoveList = styled.div`
     height: 733px;
-    border: 1px solid black;
     justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
