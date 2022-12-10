@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { GRAY_AVAILABLE } from "../../constants/colors";
 
-export default function Seat(){
+export default function Seat({seatNumber}){
     return(
         <ContainerSeat>
-            01
+            {seatNumber}
         </ContainerSeat>
     );
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Success(){
+export default function Success({buyerCPF, buyerName}){
     return(
         <ContainerSucess>
             <div>
@@ -17,10 +17,9 @@ export default function Success(){
 
             <div>
                 <h5>Comprador</h5>
-                <p>Nome: João da Silva Sauro</p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {buyerName}</p>
+                <p>CPF: {buyerCPF}</p>
             </div>
-
         </ContainerSucess>
     );
 }

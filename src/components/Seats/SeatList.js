@@ -1,74 +1,31 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Seat from "./Seat";
 import Button from "../GlobalComponents/Button";
+import seatsNumbers from "../../constants/seatsNumbers";
 
-export default function SeatList() {
+export default function SeatList({setBuyerCPF, setBuyerName}) {
+
+    const navigate = useNavigate();
+
+    function reservar(event){
+        event.preventDefault();
+        navigate("/success");
+    }
+
     return (
         <>
             <ContainerSeatList>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
-                <Seat></Seat>
+               {seatsNumbers.map((seatNumber) => <Seat seatNumber={seatNumber}></Seat>)} 
             </ContainerSeatList>
 
             <ContainerForms>
-                <form action="">
+                <form action="" onSubmit={reservar}>
                     <label htmlFor="input-name">Nome do comprador: </label>
-                    <Input type="text" id="input-name" placeholder="Digite o seu nome" />
+                    <Input type="text" id="input-name" placeholder="Digite o seu nome" onChange={(e) => setBuyerName(e.target.value)} required/>
 
-                    <label htmlFor="input-name">CPF do comprador: </label>
-                    <Input type="text" id="input-names" placeholder="Digite o seu CPF..." />
+                    <label htmlFor="input-cpf">CPF do comprador: </label>
+                    <Input type="text" id="input-cpf" minLength={10} placeholder="Digite o seu CPF..." onChange={(e) => setBuyerCPF(e.target.value)} required />
                 
                     <Button type="submit" titleButton={'Reservar assentos(s)'}></Button>
                 </form>

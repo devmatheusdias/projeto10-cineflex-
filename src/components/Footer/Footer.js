@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-export default function Footer(){
+export default function Footer({session}){
+
+    const {title, posterURL} = session;
+
     return(
         <ContainerFooter>
-            <img src="https://images2.imgbox.com/57/17/0JGhDyKv_o.png" alt="" />
+            <img src={posterURL} alt="" />
             <div>
-            <p>Enola Holmes</p>
-            <p>Quinta-feira - 15:00</p>
+            <p>{title}</p>
+            <p>{}</p>
             </div>
         </ContainerFooter>
     );

@@ -2,23 +2,26 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Movie from "./Movie";
+import { Link, useParams } from "react-router-dom"
 
 
-export default function MovieList(){
+export default function MovieList() {
 
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies`)
-        .then(res => setMovies(res.data))
-        .catch(err => console.log(err));
+            .then(res => setMovies(res.data))
+            .catch(err => console.log(err));
     }, []);
 
-    console.log(movies[0])
-
-    return(
+    return (
         <ContainerMoveList>
-            {movies.map((movie) => <Movie movieAPI={movie}></Movie>)}
+            {movies.map((movie) =>
+                <Link to={`/sessions/${movie.id}`}>
+                    <Movie movieAPI={movie} />
+                </Link>
+            )}
         </ContainerMoveList>
     );
 }
