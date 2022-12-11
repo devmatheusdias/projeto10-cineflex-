@@ -5,7 +5,7 @@ import Movie from "./Movie";
 import { Link, useParams } from "react-router-dom"
 
 
-export default function MovieList() {
+export default function MovieList({ setMovie }) {
 
     const [movies, setMovies] = useState([]);
 
@@ -16,17 +16,15 @@ export default function MovieList() {
     }, []);
 
     return (
-        <ContainerMoveList>
+        <ContainerMovieList>
             {movies.map((movie) =>
-                <Link to={`/sessions/${movie.id}`}>
-                    <Movie movieAPI={movie} />
-                </Link>
+                <Movie movie={movie} />
             )}
-        </ContainerMoveList>
+        </ContainerMovieList>
     );
 }
 
-const ContainerMoveList = styled.div`
+const ContainerMovieList = styled.div`
     height: 733px;
     justify-content: space-between;
     display: flex;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Footer({session}){
+export default function Footer({session, date, showTime}){
 
     const {title, posterURL} = session;
 
@@ -9,7 +9,7 @@ export default function Footer({session}){
             <img src={posterURL} alt="" />
             <div>
             <p>{title}</p>
-            <p>{}</p>
+            <p>{date} - {showTime}</p>
             </div>
         </ContainerFooter>
     );

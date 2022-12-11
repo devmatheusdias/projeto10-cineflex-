@@ -1,17 +1,26 @@
 
 import styled from "styled-components";
+// import { useNavigate } from "react-router-dom";
 import { ORANGE_BTN } from "../../constants/colors";
+import { Link } from "react-router-dom";
 
-export default function Session({session}) {
 
-    const {weekday, date, showtimes} = session;
+export default function Session({ session }) {
+
+    const { weekday, date, showtimes } = session;
 
     return (
         <ContainerSession>
-            <p>{weekday} - {date}</p>
+            <p>{weekday} : {date}</p>
             <div>
-                <button>{showtimes[0].name}</button>
-                <button>{showtimes[1].name}</button>
+                <Link to={`seats/${showtimes[0].id}`}>
+                    <button>{showtimes[0].name}</button>
+                </Link>
+
+                <Link to={`seats/${showtimes[1].id}`}>
+                    <button>{showtimes[1].name}</button>
+                </Link>
+
             </div>
         </ContainerSession>
     );
@@ -38,5 +47,6 @@ const ContainerSession = styled.div`
         font-size: 18px;
         line-height: 21.09px;
         margin-right: 9px;
+        cursor: pointer;
     }
 `

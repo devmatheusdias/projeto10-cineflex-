@@ -1,14 +1,15 @@
 import styled from "styled-components"
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function Movie({ movieAPI }) {
+export default function Movie({ movie }) {
 
-    const { posterURL} = movieAPI
-    const {idSession} = useParams();
+    const { posterURL } = movie
 
     return (
         <ContainerMovie>
+            <Link to={`/sessions/${movie.id}`}>
                 <img src={posterURL} alt="" />
+            </Link>
         </ContainerMovie>
     );
 }

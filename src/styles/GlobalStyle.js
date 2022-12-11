@@ -1,3 +1,4 @@
+import { SELECTED } from "../constants/colors";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -47,5 +48,4 @@ table {
     border-spacing: 0;
 }
 `
-
 export default GlobalStyle;
