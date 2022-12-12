@@ -13,21 +13,23 @@ function App() {
   const [shopperName,setShopperName] = useState("");
   const [shopperCpf,setShopperCpf] = useState("");
   const [selectedSeats, setSelectedSeats] = useState([]);
-
-
+  const [movie, setMovie] = useState({});
+  const [session, setSession] = useState([]);
+  const [sessionDate, setSessionDate] = useState("");
+  const [sessionHour, setSessionHour] = useState("");
 
   return (
     <AppContainer>
       <BrowserRouter>
         <Header></Header>
         <Routes>
-          <Route path='/' element={<MovieList></MovieList>} />
+          <Route path='/' element={<MovieList setMovie={setMovie}></MovieList>} />
           
-          <Route path='/sessions/:idMovie' element={<SessionsList></SessionsList>}/>
+          <Route path='/sessions/:idMovie' element={<SessionsList movie={movie} session={session} setSession={setSession} setSessionDate={setSessionDate} setSessionHour={setSessionHour}></SessionsList>} />
           
-          <Route path='sessions/:idMovie/seats/:idSession' element={<SeatList  setShopperName={setShopperName} setShopperCpf={setShopperCpf} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}></SeatList>}/>
+          <Route path='sessions/:idMovie/seats/:idSession' element={<SeatList  setShopperName={setShopperName} setShopperCpf={setShopperCpf} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} movie={movie} session={session}></SeatList>}/>
           
-          <Route path='/success' element={<Success shopperName={shopperName} shopperCpf={shopperCpf} selectedSeats={selectedSeats}></Success>}/>
+          <Route path='/success' element={<Success shopperName={shopperName} shopperCpf={shopperCpf} selectedSeats={selectedSeats} movie={movie} session={session} sessionDate={sessionDate} sessionHour={sessionHour}></Success>}/>
         </Routes>
       </BrowserRouter>
     </AppContainer>

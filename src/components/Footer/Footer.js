@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export default function Footer({session, date, showTime}){
+export default function Footer({movie}){
 
-    const {title, posterURL} = session;
+    const {title, posterURL} = movie;
 
     return(
         <ContainerFooter>
             <img src={posterURL} alt="" />
             <div>
             <p>{title}</p>
-            <p>{date} - {showTime}</p>
+            <p>{'movie'}{'data'}</p>
             </div>
         </ContainerFooter>
     );

@@ -7,9 +7,8 @@ import Loading from "../../assets/img/loading.gif"
 import { useParams } from "react-router-dom"
 
 
-export default function SessionsList() {
+export default function SessionsList({movie, session, setSession,  setSessionDate, setSessionHour}) {
 
-    const [session, setSession] = useState([]);
     const params = useParams();
 
     useEffect(() => {
@@ -26,9 +25,9 @@ export default function SessionsList() {
     return (
         <>
             <ContainerSessionsList>
-                {session.days.map((session) => <Session session={session}></Session>)}
+                {session.days.map((session) => <Session session={session} setSessionDate={setSessionDate} setSessionHour={setSessionHour}></Session>)}
             </ContainerSessionsList>
-            {/* <Footer session={session} date={date} showTime={showTime}></Footer> */}
+            <Footer movie={movie}></Footer>
         </>
     );
 }

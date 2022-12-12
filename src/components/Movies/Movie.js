@@ -1,14 +1,14 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom";
 
-export default function Movie({ movie }) {
+export default function Movie({movie, setMovie}) {
 
-    const { posterURL } = movie
+    const { posterURL } = movie;
 
     return (
         <ContainerMovie>
             <Link to={`/sessions/${movie.id}`}>
-                <img src={posterURL} alt="" />
+                <img src={posterURL} alt="" onClick={()=> setMovie(movie)}/>
             </Link>
         </ContainerMovie>
     );

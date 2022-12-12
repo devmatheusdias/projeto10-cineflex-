@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export default function Success({movie, date, shopperName, shopperCpf, selectedSeats}){
+export default function Success({movie, shopperName, shopperCpf, selectedSeats, session, sessionDate, sessionHour}){
     return(
         <ContainerSucess>
             <div>
                 <h5>Filme e sessão</h5>
-                <p>{movie}</p>
-                <p>{date} 15:00</p>
+                <p>{movie.title}</p>
+                <p>{sessionDate} - {sessionHour}</p>
             </div>
 
             <div>

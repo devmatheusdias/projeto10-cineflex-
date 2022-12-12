@@ -7,9 +7,10 @@ import Button from "../GlobalComponents/Button";
 import { useEffect, useState } from "react";
 import Loading from "../../assets/img/loading.gif"
 import axios from "axios";
+import Footer from "../Footer/Footer";
 
 
-    export default function SeatList({setShopperName,setShopperCpf, selectedSeats, setSelectedSeats}) {
+    export default function SeatList({setShopperName,setShopperCpf, selectedSeats, setSelectedSeats, movie}) {
 
     const [seats, setSeats] = useState([]);
     const params = useParams();
@@ -30,8 +31,21 @@ import axios from "axios";
         return <img src={Loading} alt="" />
     }
 
+    const pedido = {
+        ids: '',
+        name: '',
+        cpf: ''
+    }
+
+
     function reservar(event){
         event.preventDefault();
+
+        const selectedSeatsId = [];
+        selectedSeats.map((selectedSeats) => selectedSeatsId.push(selectedSeats.id));
+
+        axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/${{ids: selectedSeatsId, name: inputName, cpf: inputCpf}}/book-many`).then(res => alert('Reservado!')).catch(err => console.log(err));
+
         setShopperName(inputName);
         setShopperCpf(inputCpf);
         navigate("/success")
@@ -51,27 +65,12 @@ import axios from "axios";
                     <Input type="text" placeholder="Digite seu CPF..." onChange={(e) => setInputCpf(e.target.value)} required/>
 
                     <Button titleButton={'Reservar assento(s)'}></Button>
-
                 </form>
             </ContainerForms>
+            <Footer movie={movie}></Footer> 
         </>
     );
 }
-
-
-
-{/* <ContainerForms>
-                <form action="" onSubmit={reservar}>
-                    <label htmlFor="input-name">Nome do comprador: </label>
-                    <Input type="text" id="input-name" placeholder="Digite o seu nome" onChange={(e) => setBuyerName(e.target.value)} required />
-
-                    <label htmlFor="input-cpf">CPF do comprador: </label>
-                    <Input type="text" id="input-cpf" minLength={10} placeholder="Digite o seu CPF..." onChange={(e) => setBuyerCPF(e.target.value)} required />
-
-                    <Button type="submit" titleButton={'Reservar assentos(s)'}></Button>
-                </form>
-            </ContainerForms>
-            <Footer session={session}></Footer> */}
 
 const ContainerSeatList = styled.div`
     padding: 24px;

@@ -5,7 +5,7 @@ import Movie from "./Movie";
 import { Link, useParams } from "react-router-dom"
 
 
-export default function MovieList({ setMovie }) {
+export default function MovieList({setMovie}) {
 
     const [movies, setMovies] = useState([]);
 
@@ -18,7 +18,7 @@ export default function MovieList({ setMovie }) {
     return (
         <ContainerMovieList>
             {movies.map((movie) =>
-                <Movie movie={movie} />
+                <Movie movie={movie} setMovie={setMovie}/>
             )}
         </ContainerMovieList>
     );

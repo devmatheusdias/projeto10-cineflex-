@@ -5,20 +5,25 @@ import { ORANGE_BTN } from "../../constants/colors";
 import { Link } from "react-router-dom";
 
 
-export default function Session({ session }) {
+export default function Session({ session,  setSessionDate, setSessionHour }) {
 
     const { weekday, date, showtimes } = session;
+
+    function setTime(sessionHour){
+        setSessionDate(date);
+        setSessionHour(sessionHour)
+    }
 
     return (
         <ContainerSession>
             <p>{weekday} : {date}</p>
             <div>
                 <Link to={`seats/${showtimes[0].id}`}>
-                    <button>{showtimes[0].name}</button>
+                    <button onClick={()=> {setTime(showtimes[0].name)}}>{showtimes[0].name}</button>
                 </Link>
 
                 <Link to={`seats/${showtimes[1].id}`}>
-                    <button>{showtimes[1].name}</button>
+                    <button onClick={()=> {setTime(showtimes[1].name)}}>{showtimes[1].name}</button>
                 </Link>
 
             </div>
