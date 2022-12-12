@@ -10,7 +10,7 @@ import axios from "axios";
 import Footer from "../Footer/Footer";
 
 
-    export default function SeatList({setShopperName,setShopperCpf, selectedSeats, setSelectedSeats, movie}) {
+    export default function SeatList({setShopperName,setShopperCpf, selectedSeats, setSelectedSeats, movie, session, sessionHour, weekday}) {
 
     const [seats, setSeats] = useState([]);
     const params = useParams();
@@ -67,7 +67,7 @@ import Footer from "../Footer/Footer";
                     <Button titleButton={'Reservar assento(s)'}></Button>
                 </form>
             </ContainerForms>
-            <Footer movie={movie}></Footer> 
+            <Footer movie={movie} session={session} weekday={weekday} sessionHour={sessionHour}></Footer> 
         </>
     );
 }

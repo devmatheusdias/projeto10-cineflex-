@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Footer({movie}){
+export default function Footer({movie, weekday, sessionHour}){
 
     const {title, posterURL} = movie;
 
@@ -9,7 +9,7 @@ export default function Footer({movie}){
             <img src={posterURL} alt="" />
             <div>
             <p>{title}</p>
-            <p>{'movie'}{'data'}</p>
+            <p>{weekday} {sessionHour}</p>
             </div>
         </ContainerFooter>
     );

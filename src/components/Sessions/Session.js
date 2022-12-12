@@ -5,13 +5,14 @@ import { ORANGE_BTN } from "../../constants/colors";
 import { Link } from "react-router-dom";
 
 
-export default function Session({ session,  setSessionDate, setSessionHour }) {
+export default function Session({ session,  setSessionDate, setSessionHour, setWeekday }) {
 
     const { weekday, date, showtimes } = session;
 
     function setTime(sessionHour){
         setSessionDate(date);
-        setSessionHour(sessionHour)
+        setWeekday(weekday);
+        setSessionHour(sessionHour);
     }
 
     return (

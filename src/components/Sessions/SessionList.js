@@ -7,7 +7,7 @@ import Loading from "../../assets/img/loading.gif"
 import { useParams } from "react-router-dom"
 
 
-export default function SessionsList({movie, session, setSession,  setSessionDate, setSessionHour}) {
+export default function SessionsList({movie, session, setSession,  setSessionDate, setSessionHour, setWeekday}) {
 
     const params = useParams();
 
@@ -25,9 +25,9 @@ export default function SessionsList({movie, session, setSession,  setSessionDat
     return (
         <>
             <ContainerSessionsList>
-                {session.days.map((session) => <Session session={session} setSessionDate={setSessionDate} setSessionHour={setSessionHour}></Session>)}
+                {session.days.map((session) => <Session session={session} setSessionDate={setSessionDate} setSessionHour={setSessionHour} setWeekday={setWeekday}></Session>)}
             </ContainerSessionsList>
-            <Footer movie={movie}></Footer>
+            <Footer movie={movie} session={''} sessionHour={''}></Footer>
         </>
     );
 }
