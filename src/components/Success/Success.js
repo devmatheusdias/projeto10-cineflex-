@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Success({movie, date, buyerCPF, buyerName,}){
+export default function Success({movie, date, shopperName, shopperCpf, selectedSeats}){
     return(
         <ContainerSucess>
             <div>
@@ -11,14 +11,13 @@ export default function Success({movie, date, buyerCPF, buyerName,}){
 
             <div>
                 <h5>Ingressos</h5>
-                <p>Assento 15</p>
-                <p>Assento 16</p>
+                {selectedSeats.map((selectedSeat) => <p>Assento: {selectedSeat.name}</p>)}
             </div>
 
             <div>
                 <h5>Comprador</h5>
-                <p>Nome: {buyerName}</p>
-                <p>CPF: {buyerCPF}</p>
+                <p>Nome: {shopperName}</p>
+                <p>CPF: {shopperCpf}</p>
             </div>
         </ContainerSucess>
     );

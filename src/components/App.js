@@ -6,9 +6,16 @@ import SeatList from '../components/Seats/SeatList';
 import SessionsList from './Sessions/SessionList';
 import Success from './Success/Success';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
- 
+
+  const [shopperName,setShopperName] = useState("");
+  const [shopperCpf,setShopperCpf] = useState("");
+  const [selectedSeats, setSelectedSeats] = useState([]);
+
+
+
   return (
     <AppContainer>
       <BrowserRouter>
@@ -18,9 +25,9 @@ function App() {
           
           <Route path='/sessions/:idMovie' element={<SessionsList></SessionsList>}/>
           
-          <Route path='sessions/:idMovie/seats/:idSession' element={<SeatList></SeatList>}/>
+          <Route path='sessions/:idMovie/seats/:idSession' element={<SeatList  setShopperName={setShopperName} setShopperCpf={setShopperCpf} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}></SeatList>}/>
           
-          <Route path='/success' element={<Success ></Success>}/>
+          <Route path='/success' element={<Success shopperName={shopperName} shopperCpf={shopperCpf} selectedSeats={selectedSeats}></Success>}/>
         </Routes>
       </BrowserRouter>
     </AppContainer>
