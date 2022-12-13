@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { ORANGE_BTN } from "../../constants/colors";
 
-export default function Button({titleButton}){
+export default function Button({titleButton, funcao}){
    return(
-    <StyledButton>{titleButton}</StyledButton>
+    <StyledButton onClick={funcao}>{titleButton}</StyledButton>
    ); 
 }
 

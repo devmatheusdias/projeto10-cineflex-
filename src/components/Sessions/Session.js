@@ -16,15 +16,15 @@ export default function Session({ session,  setSessionDate, setSessionHour, setW
     }
 
     return (
-        <ContainerSession>
+        <ContainerSession data-test="movie-day">
             <p>{weekday} : {date}</p>
             <div>
                 <Link to={`seats/${showtimes[0].id}`}>
-                    <button onClick={()=> {setTime(showtimes[0].name)}}>{showtimes[0].name}</button>
+                    <button onClick={()=> {setTime(showtimes[0].name)}} data-test="showtime">{showtimes[0].name}</button>
                 </Link>
 
                 <Link to={`seats/${showtimes[1].id}`}>
-                    <button onClick={()=> {setTime(showtimes[1].name)}}>{showtimes[1].name}</button>
+                    <button onClick={()=> {setTime(showtimes[1].name)}} data-test="showtime">{showtimes[1].name}</button>
                 </Link>
 
             </div>

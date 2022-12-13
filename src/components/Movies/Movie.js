@@ -6,7 +6,7 @@ export default function Movie({movie, setMovie}) {
     const { posterURL } = movie;
 
     return (
-        <ContainerMovie>
+        <ContainerMovie data-test="movie">
             <Link to={`/sessions/${movie.id}`}>
                 <img src={posterURL} alt="" onClick={()=> setMovie(movie)}/>
             </Link>

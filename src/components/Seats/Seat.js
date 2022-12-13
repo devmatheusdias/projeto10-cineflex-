@@ -34,7 +34,7 @@ export default function Seat({ seat, selectedSeats, setSelectedSeats }) {
 
     return (
         <>
-            <ContainerSeat isAvailable={isAvailable} selectedSeats={!selectedSeats.includes(seat)} onClick={() => { selecionar(seat) }} >
+            <ContainerSeat data-test="seat" isAvailable={isAvailable} selectedSeats={!selectedSeats.includes(seat)} onClick={() => { selecionar(seat) }} >
                 {name}
             </ContainerSeat>
         </>

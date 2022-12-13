@@ -3,14 +3,13 @@ import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom"
 import Seat from "./Seat";
 import Button from "../GlobalComponents/Button";
-// import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import Loading from "../../assets/img/loading.gif"
 import axios from "axios";
 import Footer from "../Footer/Footer";
 
 
-    export default function SeatList({setShopperName,setShopperCpf, selectedSeats, setSelectedSeats, movie, session, sessionHour, weekday}) {
+export default function SeatList({ setShopperName, setShopperCpf, selectedSeats, setSelectedSeats, movie, session, sessionHour, weekday }) {
 
     const [seats, setSeats] = useState([]);
     const params = useParams();
@@ -31,43 +30,52 @@ import Footer from "../Footer/Footer";
         return <img src={Loading} alt="" />
     }
 
-    const pedido = {
-        ids: '',
-        name: '',
-        cpf: ''
-    }
 
-
-    function reservar(event){
+    function reservar(event) {
         event.preventDefault();
 
-        const selectedSeatsId = [];
-        selectedSeats.map((selectedSeats) => selectedSeatsId.push(selectedSeats.id));
+        if (selectedSeats.length == 0) {
+            return alert('Você precisa selecionar no minimo 1 assento');
+        } else {
 
-        axios.post(`https://mock-api.driven.com.br/api/v8/cineflex/${{ids: selectedSeatsId, name: inputName, cpf: inputCpf}}/book-many`).then(res => alert('Reservado!')).catch(err => console.log(err));
+            const selectedSeatsId = [];
+            selectedSeats.map((selectedSeats) => selectedSeatsId.push(selectedSeats.id));
 
-        setShopperName(inputName);
-        setShopperCpf(inputCpf);
-        navigate("/success")
+
+            const pedido = {
+                ids: selectedSeatsId,
+                name: inputName,
+                cpf: inputCpf
+            }
+
+            const url = "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many"
+
+            axios.post(url, pedido).then(res => console.log('reservado!')).catch(err => console.log(err));
+
+            setShopperName(inputName);
+            setShopperCpf(inputCpf);
+            navigate("/success")
+        }
     }
 
     return (
         <>
             <ContainerSeatList>
+                <p>Selecione o(s) assento(s)</p>
                 {seats.seats.map((seat) => <Seat seat={seat} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}></Seat>)}
             </ContainerSeatList>
             <ContainerForms>
                 <form action="" onSubmit={reservar}>
                     <label htmlFor="">Nome do comprador:</label>
-                    <Input type="text" placeholder="Digite seu nome..." onChange={(e) => setInputName(e.target.value)} required/>
+                    <Input data-test="client-name" type="text" placeholder="Digite seu nome..." minLength={3} onChange={(e) => setInputName(e.target.value)} required />
 
                     <label htmlFor="">CPF do comprador:</label>
-                    <Input type="text" placeholder="Digite seu CPF..." onChange={(e) => setInputCpf(e.target.value)} required/>
+                    <Input data-test="client-cpf" type="text" placeholder="Digite seu CPF..." minLength={11} onChange={(e) => setInputCpf(e.target.value)} required />
 
-                    <Button titleButton={'Reservar assento(s)'}></Button>
+                    <Button data-test="book-seat-btn" titleButton={'Reservar assento(s)'}></Button>
                 </form>
             </ContainerForms>
-            <Footer movie={movie} session={session} weekday={weekday} sessionHour={sessionHour}></Footer> 
+            <Footer data-test="footer" movie={movie} session={session} weekday={weekday} sessionHour={sessionHour}></Footer>
         </>
     );
 }
@@ -78,6 +86,16 @@ const ContainerSeatList = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    p{
+        width: 100%;
+        padding: 30px 0px;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 28.13pxs;
+    }
 `
 const ContainerForms = styled.div`
     form{

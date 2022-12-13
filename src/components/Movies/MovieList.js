@@ -2,10 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Movie from "./Movie";
-import { Link, useParams } from "react-router-dom"
 
-
-export default function MovieList({setMovie}) {
+export default function MovieList({ setMovie }) {
 
     const [movies, setMovies] = useState([]);
 
@@ -17,8 +15,9 @@ export default function MovieList({setMovie}) {
 
     return (
         <ContainerMovieList>
+            <p className="page-title">Selecione o filme</p>
             {movies.map((movie) =>
-                <Movie movie={movie} setMovie={setMovie}/>
+                <Movie movie={movie} setMovie={setMovie} />
             )}
         </ContainerMovieList>
     );
@@ -31,4 +30,15 @@ const ContainerMovieList = styled.div`
     flex-wrap: wrap;
     padding: 38px;
     overflow-y: auto;
+
+    .page-title{
+        width: 100%;
+        padding: 0px 0px 30px 0px;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 28.13pxs;
+    }
+    
 `

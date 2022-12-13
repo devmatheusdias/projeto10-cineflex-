@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import { ORANGE_BTN } from '../../constants/colors';
 
-export default function Header(){
-    return(
+export default function Header() {
+
+    return (
         <HeaderContainer>
             <p>CINEFLEX</p>
         </HeaderContainer>

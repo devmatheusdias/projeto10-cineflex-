@@ -25,9 +25,10 @@ export default function SessionsList({movie, session, setSession,  setSessionDat
     return (
         <>
             <ContainerSessionsList>
+                <p className="page-title">Selecione o horário</p>
                 {session.days.map((session) => <Session session={session} setSessionDate={setSessionDate} setSessionHour={setSessionHour} setWeekday={setWeekday}></Session>)}
             </ContainerSessionsList>
-            <Footer movie={movie} session={''} sessionHour={''}></Footer>
+            <Footer data-test="footer" movie={movie} session={''} sessionHour={''}></Footer>
         </>
     );
 }
@@ -35,6 +36,16 @@ export default function SessionsList({movie, session, setSession,  setSessionDat
 const ContainerSessionsList = styled.div`
     height: 700px;
     overflow-y: auto;
+    .page-title{
+        width: 100%;
+        padding: 30px 0px;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 28.13pxs;
+    }
+    
     img{
         width: 20px;
         height: 20px;
